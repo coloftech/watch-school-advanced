@@ -128,11 +128,12 @@ function getsource_id(url){
         //code block
         id=4;
         break;
-    case 'openload':
+    case 'openload.co':
+    case 'openload.com':
         //code block
         id=5;
         break;
-    case 'google':
+    case 'google.com':
         //code block
         id=6;
         break;

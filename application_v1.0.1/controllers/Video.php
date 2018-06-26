@@ -17,6 +17,13 @@ class Video extends CI_Controller
 		$this->load->model('video_m');
 
 	}
+	public function text($value='')
+	{
+		# code...
+
+		$data['site_title'] = 'Add new of video.';
+		$this->themes->run('admin','admin/video/add',$data);
+	}
 	public function index($value='')
 	{
 		# code...

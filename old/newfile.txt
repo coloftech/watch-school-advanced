@@ -1,8 +1,0 @@
-{"id":"2","firstname":"aasf","lastname":"asfa","email":"asfa@fasfa.sdfa","username":"admin","password":"7c4a8d09ca3762af61e59520943dc26494f8941b","avatar":"","online":"1","created_at":"0000-00-00 00:00:00","updated_at":"0000-00-00 00:00:00"}
-
-
-
-hostname = 'sql53.main-hosting.eu'
-username = 'u230971617_letse'
-password = 'hearts012'
-dbname = 'u230971617_video'

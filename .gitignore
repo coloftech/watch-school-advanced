@@ -15,3 +15,8 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+/old/
+.htaccess
+config.ini.php
+episode.json
+*.zip
