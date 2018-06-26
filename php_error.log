@@ -1,0 +1,8 @@
+[25-Jun-2018 19:45:21 Asia/Manila] PHP Fatal error:  Cannot redeclare Auto_m::paging() in E:\GIT\watchschool\application_v1.0.1\models\Auto_m.php on line 195
+[25-Jun-2018 20:14:51 Asia/Manila] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in E:\GIT\watchschool\system\database\drivers\mysqli\mysqli_driver.php on line 305
+[25-Jun-2018 21:45:24 Asia/Manila] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in E:\GIT\watchschool\application_v1.0.1\models\Video_model.php on line 23
+[25-Jun-2018 21:45:28 Asia/Manila] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in E:\GIT\watchschool\application_v1.0.1\models\Video_model.php on line 23
+[25-Jun-2018 22:40:30 Asia/Manila] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in E:\GIT\watchschool\application_v1.0.1\controllers\Watch.php on line 198
+[25-Jun-2018 22:41:03 Asia/Manila] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in E:\GIT\watchschool\application_v1.0.1\controllers\Watch.php on line 111
+[26-Jun-2018 17:01:54 Asia/Manila] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in E:\GIT\watchschool\application_v1.0.1\models\Video_m.php on line 334
+[26-Jun-2018 17:02:10 Asia/Manila] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in E:\GIT\watchschool\application_v1.0.1\models\Video_m.php on line 337
