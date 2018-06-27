@@ -153,7 +153,7 @@
 	<div class="video-content" style="display:block;">
 		
 		
-    <?php if ($video->source_id == 9): ?>
+    <?php if ($video->source_id == 8): ?>
     
     <?php 
     $url = $video->link;

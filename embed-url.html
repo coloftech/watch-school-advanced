@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video url to embeded with bootstrap 3</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-yNuQMX46Gcak2eQsUzmBYgJ3eBeWYNKhnjyiBqLd1vvtE9kuMtgw6bjwN8J0JauQ" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script   src="https://code.jquery.com/jquery-1.11.1.min.js"
+  integrity="sha256-VAvG3sHdS5LqTT+5A/aeq/bZGa/Uj04xKxY8KM/w9EE="
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="assets/js/coloftech-embed.video.class.js"></script>
+</head>
+<body>
+<di class="wrapper">
+	<div class="container">
+		<div class="col-md-12">
+			<center>
+<div class="panel">
+	<div class="panel-body">
+		<div class="logo"><img src="images/coloftech.jpg"></div>
+	</div>
+</div>				
+<div class="panel">
+	<div class="panel-heading">
+		
+<h3>Embeded your video url online.</h3>
+<div class="form-area">
+	
+
+        	<div class="form-group">
+
+        	<ul class="nav nav-tabs" id="ul_url">
+				  <li class="li_url active"><a data-toggle="tab" href="#tab_url" class="tab_url">Episode url</a></li>
+				  <li class="tab_embed"><a data-toggle="tab" href="#tab_embed" class="tab_embed">Embeded</a></li>
+				  
+				 
+
+			</ul>
+
+					<div class="tab-content">
+						<div id="tab_url"  class="tab-pane fade in active">
+							<div class="form-group">
+								
+        						<label>Episode url</label>
+        						<input type="url" id="episode_url" name="episode_url" class="form-control" value="" placeholder="Enter link here">
+							</div>
+
+							<div class="form-group"  style="margin-top:-15px;">
+								<label>Video Mirror</label>
+								<select class="form-control" id="videosource" name="videosource">
+									<option value="0">-SELECT HERE-</option>
+									<option value="1">FACEBOOK</option>
+									<option value="2">VIMEO</option>
+									<option value="3">DAILYMOTION</option>
+									<option value="4">YOUTUBE</option>
+									<option value="5">YOURUPLOAD (IFRAME support)</option>
+									<option value="6">MP4UPLOAD</option>
+									<option value="7">OPENLOAD</option>
+									<option value="8">ANISUBBED (HTML5 VIDEO support)</option>
+									<option value="9">OTHERS (IFRAME)</option>
+									<option value="10">OTHERS (VIDEO)</option>
+
+									
+								</select>
+							</div>
+						</div>
+						<div id="tab_embed" class="tab-pane fade">
+							<div class="form-group">
+								<label>Embeded</label>
+
+	        					<textarea name="embed" id="embed" class="form-control"></textarea>
+							</div>
+						</div>
+
+
+					</div>
+        	</div>
+</div>
+	</div>
+	<div class="panel-body">
+		
+<br/>
+<br/>
+<label>Currently visit our other website to view anime, tv series and more..<a href="http://www.watchschool.xyz/index.php"> Go to website</a></label>
+	</div>
+</div>
+			</center>
+		</div>
+	</div>
+
+</di>
+
+<script type="text/javascript">
+	
+var embed = false;
+
+	$('#episode_url').on('blur',function(){
+		let url = $(this).val();
+
+		if(url.length < 10){
+		$('.with-error').html('');
+			return false;
+		}
+		let video = new Embed_video();
+		video._url = url;
+		//let hostname = video.host_name();
+		let source_id = video.source_id();
+		$('#videosource').val(source_id);
+		let embeded = video.embeded();
+		$('#embed').val(embeded);
+
+
+	});
+
+	$('#videosource').on('change',function(elem){
+
+		let url = $('#episode_url').val();
+		if(url.length < 10){
+		$('.with-error').html('');
+		$('#embed').val('');
+			return false;
+		}
+		let source = $(this).val();
+		let video = new Embed_video();
+		video._url = url;
+		if(source == 8 || source == 10){
+
+			var embeded = video.embeded('video');
+		}else{
+
+			var embeded = video.embeded();
+		}
+
+
+		$('#embed').val(embeded);
+
+	})
+
+</script>
+</body>
+</html>

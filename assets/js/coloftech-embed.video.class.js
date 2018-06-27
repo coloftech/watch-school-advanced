@@ -115,10 +115,10 @@ class Embed_video
 			id = 7;
 			break;
 			case 'play44.net':
-			id = 8;
+			id = 9;
 			break;
     		default:
-        	id = 9;
+        	id = 10;
 		}
 		return id;
 	}

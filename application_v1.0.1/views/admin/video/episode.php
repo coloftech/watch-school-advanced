@@ -66,17 +66,18 @@
 							<div class="form-group"  style="margin-top:-15px;">
 								<label>Video Mirror</label>
 								<select class="form-control" id="videosource" name="videosource">
-									<option value="0" <?php echo !empty($details->source_id) ? ($details->source_id == 0 ) ? 'selected' : '' : '';?> >-SELECT HERE-</option>
-									<option value="3" <?php echo !empty($details->source_id) ? ($details->source_id == 3 ) ? 'selected' : '' : '';?>>FACEBOOK</option>
-									<option value="8" <?php echo !empty($details->source_id) ? ($details->source_id == 8 ) ? 'selected' : '' : '';?>>VIMEO</option>
-									<option value="9" <?php echo !empty($details->source_id) ? ($details->source_id == 9 ) ? 'selected' : '' : '';?>>ANISUBBED (HTML5 VIDEO support)</option>
-									<option value="10" <?php echo !empty($details->source_id) ? ($details->source_id == 10 ) ? 'selected' : '' : '';?>>YOURUPLOAD (IFRAME support)</option>
-									<option value="1" <?php echo !empty($details->source_id) ? ($details->source_id == 1 ) ? 'selected' : '' : '';?>>MP4UPLOAD</option>
-									<option value="2" <?php echo !empty($details->source_id) ? ($details->source_id == 2 ) ? 'selected' : '' : '';?>>YOUTUBE</option>
-									<option value="4" <?php echo !empty($details->source_id) ? ($details->source_id == 4 ) ? 'selected' : '' : '';?>>DAILYMOTION</option>
-									<option value="5" <?php echo !empty($details->source_id) ? ($details->source_id == 5 ) ? 'selected' : '' : '';?>>OPENLOAD</option>
-									<option value="6" <?php echo !empty($details->source_id) ? ($details->source_id == 6 ) ? 'selected' : '' : '';?>>GOOGLE DRIVE</option>
-									<option value="7" <?php echo !empty($details->source_id) ? ($details->source_id == 7 ) ? 'selected' : '' : '';?>>OTHERS</option>
+									<option value="0"  <?php echo !empty($details->source_id) ? ($details->source_id == 0 ) ? 'selected' : '' : '';?> >-SELECT HERE-</option>
+									<option value="1"  <?php echo !empty($details->source_id) ? ($details->source_id == 1 ) ? 'selected' : '' : '';?> >FACEBOOK</option>
+									<option value="2"  <?php echo !empty($details->source_id) ? ($details->source_id == 2 ) ? 'selected' : '' : '';?> >VIMEO</option>
+									<option value="3"  <?php echo !empty($details->source_id) ? ($details->source_id == 3 ) ? 'selected' : '' : '';?> >DAILYMOTION</option>
+									<option value="4"  <?php echo !empty($details->source_id) ? ($details->source_id == 4 ) ? 'selected' : '' : '';?> >YOUTUBE</option>
+									<option value="5"  <?php echo !empty($details->source_id) ? ($details->source_id == 5 ) ? 'selected' : '' : '';?> >YOURUPLOAD (IFRAME support)</option>
+									<option value="6"  <?php echo !empty($details->source_id) ? ($details->source_id == 6 ) ? 'selected' : '' : '';?> >MP4UPLOAD</option>
+									<option value="7"  <?php echo !empty($details->source_id) ? ($details->source_id == 7 ) ? 'selected' : '' : '';?> >OPENLOAD</option>
+									<option value="9"  <?php echo !empty($details->source_id) ? ($details->source_id == 9 ) ? 'selected' : '' : '';?> >ANISUBBED (HTML5 VIDEO support)</option>
+									<option value="8"  <?php echo !empty($details->source_id) ? ($details->source_id == 8 ) ? 'selected' : '' : '';?> >OTHERS (IFRAME)</option>
+									<option value="10"  <?php echo !empty($details->source_id) ? ($details->source_id == 10 ) ? 'selected' : '' : '';?> >OTHERS (VIDEO)</option>
+
 								</select>
 							</div>
 						</div>
@@ -199,18 +200,22 @@
 
 							<div class="form-group"  style="margin-top:-15px;">
 								<label>Video Mirror</label>
-								<select class="form-control" id="mirror_videosource" name="videosource">
-									<option value="0" <?php echo !empty($details->source_id) ? ($details->source_id == 0 ) ? 'selected' : '' : '';?> >-SELECT HERE-</option>
-									<option value="3" <?php echo !empty($details->source_id) ? ($details->source_id == 3 ) ? 'selected' : '' : '';?>>FACEBOOK</option>
-									<option value="8" <?php echo !empty($details->source_id) ? ($details->source_id == 8 ) ? 'selected' : '' : '';?>>VIMEO</option>
-									<option value="9" <?php echo !empty($details->source_id) ? ($details->source_id == 9 ) ? 'selected' : '' : '';?>>ANISUBBED (HTML5 VIDEO support)</option>
-									<option value="10" <?php echo !empty($details->source_id) ? ($details->source_id == 10 ) ? 'selected' : '' : '';?>>YOURUPLOAD (IFRAME support)</option>
-									<option value="1" <?php echo !empty($details->source_id) ? ($details->source_id == 1 ) ? 'selected' : '' : '';?>>MP4UPLOAD</option>
-									<option value="2" <?php echo !empty($details->source_id) ? ($details->source_id == 2 ) ? 'selected' : '' : '';?>>YOUTUBE</option>
-									<option value="4" <?php echo !empty($details->source_id) ? ($details->source_id == 4 ) ? 'selected' : '' : '';?>>DAILYMOTION</option>
-									<option value="5" <?php echo !empty($details->source_id) ? ($details->source_id == 5 ) ? 'selected' : '' : '';?>>OPENLOAD</option>
-									<option value="6" <?php echo !empty($details->source_id) ? ($details->source_id == 6 ) ? 'selected' : '' : '';?>>GOOGLE DRIVE</option>
-									<option value="7" <?php echo !empty($details->source_id) ? ($details->source_id == 7 ) ? 'selected' : '' : '';?>>OTHERS</option>
+
+
+								<select class="form-control" id="videosource" name="videosource">
+									<option value="0"  <?php echo !empty($details->source_id) ? ($details->source_id == 0 ) ? 'selected' : '' : '';?> >-SELECT HERE-</option>
+									<option value="1"  <?php echo !empty($details->source_id) ? ($details->source_id == 1 ) ? 'selected' : '' : '';?> >FACEBOOK</option>
+									<option value="2"  <?php echo !empty($details->source_id) ? ($details->source_id == 2 ) ? 'selected' : '' : '';?> >VIMEO</option>
+									<option value="3"  <?php echo !empty($details->source_id) ? ($details->source_id == 3 ) ? 'selected' : '' : '';?> >DAILYMOTION</option>
+									<option value="4"  <?php echo !empty($details->source_id) ? ($details->source_id == 4 ) ? 'selected' : '' : '';?> >YOUTUBE</option>
+									<option value="5"  <?php echo !empty($details->source_id) ? ($details->source_id == 5 ) ? 'selected' : '' : '';?> >YOURUPLOAD (IFRAME support)</option>
+									<option value="6"  <?php echo !empty($details->source_id) ? ($details->source_id == 6 ) ? 'selected' : '' : '';?> >MP4UPLOAD</option>
+									<option value="7"  <?php echo !empty($details->source_id) ? ($details->source_id == 7 ) ? 'selected' : '' : '';?> >OPENLOAD</option>
+									<option value="9"  <?php echo !empty($details->source_id) ? ($details->source_id == 9 ) ? 'selected' : '' : '';?> >ANISUBBED (HTML5 VIDEO support)</option>
+									<option value="8"  <?php echo !empty($details->source_id) ? ($details->source_id == 8 ) ? 'selected' : '' : '';?> >OTHERS (IFRAME)</option>
+									<option value="10"  <?php echo !empty($details->source_id) ? ($details->source_id == 10 ) ? 'selected' : '' : '';?> >OTHERS (VIDEO)</option>
+
+
 								</select>
 							</div>
 						</div>
@@ -328,6 +333,25 @@ var embed = false;
 	});
 
 	$('#episode_url').on('blur',function(){
+
+		let url = $(this).val();
+
+		if(url.length < 10){
+		$('.with-error').html('');
+			return false;
+		}
+		let video = new Embed_video();
+		video._url = url;
+		//let hostname = video.host_name();
+		let source_id = video.source_id();
+		$('#videosource').val(source_id);
+		let embeded = video.embeded();
+		$('#embed').val(embeded);
+
+		$('#modalpreviewvideo').modal('show');
+		$('.show-message').html(embeded);
+
+		/*
 		var url = $(this).val();
 		var hostname = extractRootDomain(url);
 		var source_id = getsource_id(hostname);
@@ -349,8 +373,31 @@ var embed = false;
 		//console.log(embed);
 
 		$('.show-message').html(embed);
+		*/
+	});
+
+	$('#videosource').on('change',function(elem){
+
+		let url = $('#episode_url').val();
+		if(url.length < 10){
+		$('.show-message').html('');
+		$('#embed').val('');
+			return false;
+		}
+		let source = $(this).val();
+		let video = new Embed_video();
+		video._url = url;
+		if(source == 8 || source == 10){
+
+			var embeded = video.embeded('video');
+		}else{
+
+			var embeded = video.embeded();
+		}
+		$('#embed').val(embeded);
 
 	});
+
 
 	$('#episode_thumbnail').on('blur',function(){
 		var url = $(this).val();

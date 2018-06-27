@@ -287,40 +287,11 @@
 									<option value="5">YOURUPLOAD (IFRAME support)</option>
 									<option value="6">MP4UPLOAD</option>
 									<option value="7">OPENLOAD</option>
-									<option value="8">ANISUBBED (HTML5 VIDEO support)</option>
-									<option value="9">OTHERS (IFRAME)</option>
+									<option value="9">ANISUBBED (HTML5 VIDEO support)</option>
+									<option value="8">OTHERS (IFRAME)</option>
 									<option value="10">OTHERS (VIDEO)</option>
 
-									<?php /*
 
-			case 'facebook.com':
-			id = 1;
-			break;
-			case 'vimeo.com':
-			id = 2;
-			break;
-			case 'dailymotion.com':
-			id = 3;
-			break;
-			case 'youtube.com':
-			case 'youtu.be':
-			id = 4;
-			break;
-			case 'yourupload.com':
-			id = 5;
-			break;
-			case 'mp4upload.com':
-			id = 6;
-			break;
-    		case 'openload.co':
-    		case 'openload.com':
-			id = 7;
-			break;
-			case 'mp4upload.com':
-			id = 8;
-			break;
-			case 'play44.net':
-									*/?>
 								</select>
 							</div>
 						</div>
@@ -645,7 +616,7 @@ var embed = false;
 
 		$('#embed').val(embeded);
 
-	})
+	});
 
 
 	function is_supported(source_id){
