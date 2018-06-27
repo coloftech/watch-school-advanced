@@ -161,6 +161,9 @@ $('#defaultq').on('keyup',function(){
   });
 });
 
+$('#listhere').on('mouseleave',function(){
+  $('#listhere li').remove();
+});
 </script>
 <!-- <script src="//basepush.com/ntfc.php?p=1734261" data-cfasync="false" async></script> -/->
 <script src="//pushance.com/ntfc.php?p=1734265&tco=1" data-cfasync="false" async></script>

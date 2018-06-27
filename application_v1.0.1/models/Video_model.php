@@ -29,6 +29,7 @@ class Video_model extends CI_Model
 		$this->db->where(array('type'=>$type,'status'=>$status));
 			}
 
+		$this->db->where(array('islivechart'=>0));
 		$this->db->order_by('live_chart_date_end','asc');
 					if($limit && $offset){
 						$this->db->limit($limit,$offset);

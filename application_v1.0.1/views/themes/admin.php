@@ -18,6 +18,7 @@
         <script src="<?=base_url('assets/js/bootstrap.min.js')?>" type="text/javascript"></script>
         <script src="<?=base_url('assets/js/plugin/bootstrap-tagsinput/dist/bootstrap-tagsinput.js');?>" type="text/javascript"></script>
         <script src="<?=base_url('assets/js/plugin/notify/dist/notify.js');?>" type="text/javascript"></script>
+        <script type="text/javascript" src="<?php echo base_url('assets/js/coloftech-embed.video.class.js')?>"></script>
 </head>
 <body>
 <div class="col-md-12">

@@ -1,4 +1,28 @@
-class Video_link
+/*
+|-------------------------------------------------------------------------
+| Copyright (c) 2018
+| This script may be used for non-commercial purposes only. For any
+| commercial purposes, please contact the author at letswrite14@gmail.com
+| Developer: Harold Rita of watchschool.xyz and coloftech
+|-------------------------------------------------------------------------
+*/
+//Sample usage
+//let video = new Embed_video();
+//video._url = 'https://vimeo.com/275474103';
+//let h = video.host_name()
+//let d = video.root_domain()
+//let s = video.source_id()
+//let e = video.embed();
+//let ex = video.split_url('/');
+//let embeded = video.embeded();
+//console.log(h);
+//console.log(d);
+//console.log(s);
+//console.log(e);
+//console.log(ex);
+//console.log(embeded);
+
+class Embed_video
 {	
 	constructor(url){
 		this._url = url;
@@ -90,14 +114,11 @@ class Video_link
     		case 'openload.com':
 			id = 7;
 			break;
-			case 'mp4upload.com':
+			case 'play44.net':
 			id = 8;
 			break;
-			case 'play44.net':
-			id = 9;
-			break;
     		default:
-        	id = 10;
+        	id = 9;
 		}
 		return id;
 	}
@@ -127,7 +148,7 @@ class Video_link
 			    if(player != 'player.vimeo.com'){
 
 			      if(split[3] != 'video'){
-			       e = 'https://'+'//'+'player.'+split[2]+'/video/'+split[3];
+			       e = 'https:'+'//'+'player.'+split[2]+'/video/'+split[3];
 
 			      }else{
 			      	e = this._url;
@@ -143,7 +164,7 @@ class Video_link
 
 				    if(split[3] != 'embed' || split[4] != 'video'){
 
-				        e = 'https://'+'//'+split[2]+'/embed/video/'+split[4];
+				        e = 'https:'+'//'+split[2]+'/embed/video/'+split[4];
 				    }else{
 				        e = this._url;//split[0]+'//'+split[2]+'/embed/video/'+split[5];
 				    }
@@ -154,10 +175,10 @@ class Video_link
 				if(split[3] != 'embed'){
 		        if(domain === 'youtu.be'){
 		        	split = this.split_url('/');
-		        	e = 'https://'+'//'+'youtube.com'+'/embed/'+split[3]+'?rel=0';
+		        	e = 'https:'+'//'+'youtube.com'+'/embed/'+split[3]+'?rel=0';
 		        }else{
 		        	split = this.split_url('=');
-		          	e = 'https://'+'//'+'youtube.com'+'/embed/'+split[1]+'?rel=0';
+		          	e = 'https:'+'//'+'youtube.com'+'/embed/'+split[1]+'?rel=0';
 		        }}
 		        else{
 		        	e = this._url;
@@ -168,7 +189,7 @@ class Video_link
 			//e = 5;
 				e = this._url;
 			    if(split[3] == 'watch'){
-			        e = 'https://'+'//'+split[2]+'/embed/'+split[4];
+			        e = 'https:'+'//'+split[2]+'/embed/'+split[4];
 			    }
 			break;
 			case 6://'mp4upload.com':
@@ -192,11 +213,7 @@ class Video_link
 	frame_type(){
 		
 		var source = this.source_id();
-		switch(id){
-			case 8:
-			case 9:
-			var type = 'video';
-			break;
+		switch(source){
 			case 1:
 			case 2:
 			case 3:
@@ -204,16 +221,20 @@ class Video_link
 			case 5:
 			case 6:
 			case 7:
+			case 9:
 			var type = 'iframe';
 			break;
-
+			case 8:
+			case 10:
+			var type = 'video';
+			break;
     		default:
 			var type = 'iframe';
 
 		}
 		return type;
 	}
-	embeded(){
+	embeded(html5){
 		var embed_url = this.embed();
 
 
@@ -231,7 +252,12 @@ class Video_link
 	    iframe.setAttribute('allowFullScreen',true);
 
 
-		switch(this.frame_type){
+	    var frame = this.frame_type();
+	    if(html5 != undefined){
+	    	frame = html5;
+	    }
+
+		switch(frame){
 			case 'video':
 
 		        video.setAttribute('src',embed_url);
@@ -247,18 +273,3 @@ class Video_link
 	}
 
 }
-//Sample usage
-//let video = new Video_link();
-//video._url = 'https://vimeo.com/275474103';
-//let h = video.host_name()
-//let d = video.root_domain()
-//let s = video.source_id()
-//let e = video.embed();
-//let ex = video.split_url('/');
-//let embeded = video.embeded();
-//console.log(h);
-//console.log(d);
-//console.log(s);
-//console.log(e);
-//console.log(ex);
-//console.log(embeded);

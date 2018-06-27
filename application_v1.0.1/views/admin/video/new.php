@@ -126,6 +126,9 @@
 				</select>
 			</div>
 
+			<br/>
+        	</div>
+        	<div class="anime-col-md-4" >
 			<div class="form-group">
 				<label>Video type</label>
 				<select class="form-control" id="type" name="type">
@@ -135,9 +138,14 @@
 					<option value="4">Others</option>
 				</select>
 			</div>
-			<br/>
-        	</div>
-        	<div class="anime-col-md-4" >
+
+			<div class="form-group">
+				<label>Show to live chart?</label>
+				<select class="form-control" id="islivechart" name="islivechart">
+					<option value="0">Yes</option>
+					<option value="1">No</option>
+				</select>
+			</div>
         	<div class="form-group">
         		
         	<label>Select image</label>
@@ -212,7 +220,13 @@
 		upload('<?=site_url()?>/image/upload','uploadthumb','imgpreview','thumbnail');
 	});
 
-
+	$('#thumbnail').on('blur',function(){
+	var t = $(this).val();
+	if(t.length < 8){
+		return false;
+	}
+	$('#imgpreview').attr('src',t);
+});
 </script>
 
 

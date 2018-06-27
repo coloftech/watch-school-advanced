@@ -27,9 +27,11 @@
 	<div class="anime-sidebar">
 		 				<div class="video-anime">
 				<div class="heading heading-default"><h4><?php echo isset($sidebar_title) ? $sidebar_title : 'RECENT RELEASE';?></h4></div>
+
 				<?php if (isset($list_mostviews)): ?>
 					
 				<?php foreach ($list_mostviews as $key): ?>
+
 					
 				<div class="anime-col-6 anime-col-sm-6 cover-contents" data-slug="<?=$key->slug?>">
 					<div class="cover-countdown"></div>
@@ -38,6 +40,18 @@
 
 				</div>
 				<?php endforeach ?>
+				<?php endif ?>
+
+
+				<?php if (isset($playlist)): ?>
+					
+				<?php foreach ($playlist as $key): ?>
+
+				 	<?php $slug = site_url('watch/c/'.$key->slug); ?>
+					<div class="anime-list"><a href="<?=$slug?>"><?=$key->title?></a></div>
+					
+				<?php endforeach ?>
+				
 				<?php endif ?>
 
 				</div>

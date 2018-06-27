@@ -112,7 +112,7 @@ class Video extends CI_Controller
 		}
 		$data['details'] = isset($details) ? $details[0] : false;
 		$data['site_title'] = 'Edit video';
-		$this->themes->run('admin','admin/video/edit',$data);
+		$this->themes->run('admin','admin/video/new-edit',$data);
 		
 	}
 
@@ -203,6 +203,7 @@ class Video extends CI_Controller
 					'thumbnail'=>$obj->thumbnail,
 					'status'=>$obj->status,
 					'type'=>$obj->type,
+					'islivechart'=>$obj->islivechart,
 					'slug'=>$this->slug->create($obj->title.' '.date('Y',strtotime($obj->release_date)))
 					);
 

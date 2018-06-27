@@ -110,7 +110,6 @@
 					<option value="1">No</option>
 				</select>
 			</div>
-
 			<div class="form-group"><button type="submit" class="btn btn-info" id="btnupdate">Update</button>
 			</div>
 				</div>
@@ -281,16 +280,47 @@
 								<label>Video Mirror</label>
 								<select class="form-control" id="videosource" name="videosource">
 									<option value="0">-SELECT HERE-</option>
-									<option value="3">FACEBOOK</option>
-									<option value="8">VIMEO</option>
-									<option value="9">ANISUBBED (HTML5 VIDEO support)</option>
-									<option value="10">YOURUPLOAD (IFRAME support)</option>
-									<option value="1">MP4UPLOAD</option>
-									<option value="2">YOUTUBE</option>
-									<option value="4">DAILYMOTION</option>
-									<option value="5">OPENLOAD</option>
-									<option value="6">GOOGLE DRIVE</option>
-									<option value="7">OTHERS</option>
+									<option value="1">FACEBOOK</option>
+									<option value="2">VIMEO</option>
+									<option value="3">DAILYMOTION</option>
+									<option value="4">YOUTUBE</option>
+									<option value="5">YOURUPLOAD (IFRAME support)</option>
+									<option value="6">MP4UPLOAD</option>
+									<option value="7">OPENLOAD</option>
+									<option value="8">ANISUBBED (HTML5 VIDEO support)</option>
+									<option value="9">OTHERS (IFRAME)</option>
+									<option value="10">OTHERS (VIDEO)</option>
+
+									<?php /*
+
+			case 'facebook.com':
+			id = 1;
+			break;
+			case 'vimeo.com':
+			id = 2;
+			break;
+			case 'dailymotion.com':
+			id = 3;
+			break;
+			case 'youtube.com':
+			case 'youtu.be':
+			id = 4;
+			break;
+			case 'yourupload.com':
+			id = 5;
+			break;
+			case 'mp4upload.com':
+			id = 6;
+			break;
+    		case 'openload.co':
+    		case 'openload.com':
+			id = 7;
+			break;
+			case 'mp4upload.com':
+			id = 8;
+			break;
+			case 'play44.net':
+									*/?>
 								</select>
 							</div>
 						</div>
@@ -370,11 +400,15 @@
 var no_image = "<?php echo site_url('image/r/no-thumbnail.jpg');?>";
 var site_url = '<?php echo site_url()?>';
 var detail_id = '<?php echo isset($details->video_detail_id) ? $details->video_detail_id : 0;?>';
+
+
 window.onload = function(){
 
 clearmodalthumbnail();
 
 playlist(detail_id);
+
+//$('#modalepisode').modal('show');
 }
 $('#btnimgset').on('click',function(){
 	var img_url = $('#thumbnail_new').val();
@@ -572,27 +606,47 @@ function addtolist(video_id,episode_number,title){
 var embed = false;
 
 	$('#episode_url').on('blur',function(){
-		var url = $(this).val();
-		var hostname = extractRootDomain(url);
-		var source_id = getsource_id(hostname);
-		var f_path = split_url(url);
-		var embed = '';
+		let url = $(this).val();
 
+		if(url.length < 10){
+		$('.with-error').html('');
+			return false;
+		}
+		let video = new Embed_video();
+		video._url = url;
+		//let hostname = video.host_name();
+		let source_id = video.source_id();
 		$('#videosource').val(source_id);
+		let embeded = video.embeded();
+		$('#embed').val(embeded);
 
-		if(source_id == 7){
-		}else if (source_id == 2) {
-			var yt = split_urlY(url);
-		}else if (source_id == 8) {
 
+	});
+
+	$('#videosource').on('change',function(elem){
+
+		let url = $('#episode_url').val();
+		if(url.length < 10){
+		$('.with-error').html('');
+		$('#embed').val('');
+			return false;
+		}
+		let source = $(this).val();
+		let video = new Embed_video();
+		video._url = url;
+		if(source == 8 || source == 10){
+
+			var embeded = video.embeded('video');
+		}else{
+
+			var embeded = video.embeded();
 		}
 
-		embed = embed_url(url,source_id);
-		$('#embed').val(embed.outerHTML);
-		console.log(embed);
 
-		$('.with-error').html(embed);
-	});
+		$('#embed').val(embeded);
+
+	})
+
 
 	function is_supported(source_id){
 		var supported = '';

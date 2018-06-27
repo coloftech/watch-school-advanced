@@ -18,7 +18,7 @@ class Watch extends CI_Controller
 		# code...
 		$views = $this->video_m->list_new_upload(10);
 		$data['list_mostviews'] = $views;
-		$playlist = $this->watch->listall(1,1,20,0);
+		$playlist = $this->watch->listall(1,1,100,0);
 		$data['playlist']=$playlist;
 
 		$data['site_title'] = 'Watchschool Playlist';
@@ -137,6 +137,10 @@ class Watch extends CI_Controller
 	public function recents($offset=0)
 	{
 		# code...
+
+		$playlist = $this->watch->listall(1,1,100,0);
+		$data['playlist']=$playlist;
+		
 		$limit_1 = 10;
 		$limit_2 = 24;
 		$data['list_video'] = $this->video_m->list_new_upload($limit_2,$offset);
