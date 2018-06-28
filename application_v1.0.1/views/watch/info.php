@@ -15,7 +15,19 @@
 								  </div>
 						</div>
 						<div class="form-group">
-							<h3><?=$title?></h3>
+							<h3><?=$title?> 
+				<?php if ($this->authentication->is_loggedin()	): ?>
+				<?php
+                    $id = $this->authentication->read('identifier');
+                    //echo "$id";
+                    if($id == 1){
+                      echo '<a href="'.site_url('video/edit/'.$details->video_detail_id).'" class="btn"><i class="fa fa-edit">
+                          </i></a>';
+                    }
+                    
+
+                    ?>
+				<?php endif ?></h3>
 						</div>
 						<div class="form-group">
 						<div class="synopsis">

@@ -134,6 +134,86 @@ class Watch extends CI_Controller
 		$this->themes->run('default','watch/new-index',$data);
 	}
 
+	public function completed($offset=0)
+	{
+
+		# code...
+		//list_chart(type,status,limit,offset);
+		//type
+		//1-anime
+		//2-movies
+		//3-tv series
+		//status
+		//1-ongoing
+		//2-incoming
+		//3-completed
+		//12-ongoing/incoming
+
+		$this->load->model('video_model','video');
+		$data['livecharts'] = $this->video->list_chart(1,3);
+
+		$this->load->model('video_model','video');
+		$data['livecharts3'] = $this->video->list_chart(3,3);
+
+		$this->load->model('video_m');
+		$views = $this->video_m->list_new_upload(10);
+
+		if(!empty($views) && is_array($views)){
+			$keywords = "";
+			foreach ($views as $key) {
+				# code...
+				$keywords[] = $key->title;
+			}
+			$data['keywords'] = implode(', ', $keywords);
+		}
+		$data['is_countdown'] = true;
+		$data['list_mostviews'] = $views;
+
+
+		$this->themes->run('default','watch/incoming',$data) ;
+
+
+	}
+	public function incoming($offset=0)
+	{
+
+		# code...
+		//list_chart(type,status,limit,offset);
+		//type
+		//1-anime
+		//2-movies
+		//3-tv series
+		//status
+		//1-ongoing
+		//2-incoming
+		//3-completed
+		//12-ongoing/incoming
+
+		$this->load->model('video_model','video');
+		$data['livecharts'] = $this->video->list_chart(1,2);
+
+		$this->load->model('video_model','video');
+		$data['livecharts3'] = $this->video->list_chart(3,2);
+
+		$this->load->model('video_m');
+		$views = $this->video_m->list_new_upload(10);
+
+		if(!empty($views) && is_array($views)){
+			$keywords = "";
+			foreach ($views as $key) {
+				# code...
+				$keywords[] = $key->title;
+			}
+			$data['keywords'] = implode(', ', $keywords);
+		}
+		$data['is_countdown'] = true;
+		$data['list_mostviews'] = $views;
+
+
+		$this->themes->run('default','watch/incoming',$data) ;
+
+
+	}
 	public function recents($offset=0)
 	{
 		# code...

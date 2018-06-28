@@ -114,6 +114,9 @@ class Embed_video
     		case 'openload.com':
 			id = 7;
 			break;
+			case 'onlinehome.us':
+			id = 11;
+			break;
 			case 'play44.net':
 			id = 9;
 			break;
@@ -200,8 +203,8 @@ class Embed_video
     		//case 'openload.com':
 			e = this._url;
 			break;
-			break;
-			case 8://'play44.net':
+			case 11:
+			case 9://'play44.net':
 			e = this._url;
 			break;
     		default:
@@ -221,11 +224,12 @@ class Embed_video
 			case 5:
 			case 6:
 			case 7:
-			case 9:
+			case 8:
 			var type = 'iframe';
 			break;
-			case 8:
+			case 9:
 			case 10:
+			case 11:
 			var type = 'video';
 			break;
     		default:

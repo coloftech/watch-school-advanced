@@ -2,6 +2,9 @@
 html,body{
 	background-image: url('../../assets/images/onepiece.jpg');
 }
+.mobile-site-title{
+	display: none;
+}
 .line-divider{
 	height: 1px;
 	display: block;
@@ -18,6 +21,7 @@ html,body{
 	background-color: #000;
 	background-color: rgba(0,0,0,0.5);
 	color: #fff;
+	padding: 1px 5px;
 
 }
 /*-------------------------------------------------*/
@@ -181,6 +185,22 @@ display: block;
 .item-2{
 	width: 48%;
 }
+.item-1{
+	width: 98%;
+}
+
+@media screen and (max-width: 1025px){
+	.watchschool-navbar > .container-fluid > #nav-portal > .nav > li.home-menu{
+	display: none;
+}
+	.watchschool-navbar > .container-fluid > .navbar-header > .navbar-brand{
+	font-size: 16px;
+}
+.watchschool-navbar .formSearch {
+  width: 200px;
+  margin-left: 170px;
+}
+}
 @media screen and (max-width: 990px){
 
 .anime > .anime-body
@@ -247,7 +267,9 @@ display: inline-block;
 									height:100%;
 								}
 @media screen and (max-width: 768px){
-
+.mobile-site-title{
+	display: block;
+}
 .pull-right{
 	display: block;
 	position: relative;
@@ -276,6 +298,19 @@ display: inline-block;
 }
 .item-2-xs{
 	width: 100%;
+}
+
+.watchschool-navbar .formSearch {
+  width: 75%;
+  margin-left: 30px;
+}
+}
+
+@media screen and (max-width: 425px){
+
+.watchschool-navbar .formSearch {
+  width: 69%;
+  margin-left: 30px;
 }
 }
 

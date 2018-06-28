@@ -1,6 +1,6 @@
 <div class="anime">
 	<div class="anime-body">
-				<div class="heading heading-default"><h4>LIVE CHART - ON GOING</h4></div>
+				<div class="heading heading-default"><h4>LIVE CHART - INCOMING</h4></div>
 		 <div class="live-chart-anime"><div class="heading-black"><h4 >Anime Series</h4></div>
 		 	<?php if (!empty($livecharts) && is_array($livecharts)): ?>
 	<?php foreach ($livecharts as $key): ?>
@@ -58,6 +58,7 @@
 	
 
 	<?php endforeach ?>
+							<?php else: ?> <br/>
 <?php endif ?>
 		 </div>
 		 <div class="live-chart-asian"><div class="heading-black"><h4>Asian/Drama Series</h4></div>
@@ -118,6 +119,7 @@
 	
 
 	<?php endforeach ?>
+							<?php else: ?> <br/>
 <?php endif ?>
 		 </div>
 

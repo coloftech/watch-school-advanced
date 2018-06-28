@@ -40,14 +40,13 @@ class Video_model extends CI_Model
 	}
 	public function listall($type=false,$status=false,$limit=0,$offset=0){
 		if($type && $status){
-			//$tbl = $this->db->dbprefix('video_detail');
-			//$sql = "SELECT video_detail_id,title,slug,status,thumbnail,type,synopsis FROM $tbl WHERE type = $type and status = $status order by title asc";
-			
-			//$query = $this->db->query($sql);
-			$this->db->select('video_detail_id,title,slug,status,thumbnail,type,synopsis')
+			$this->db->select('*')
 						->from('video_detail')
-						->where('type',$type)
 						->where('status',$status);
+				if($type > 0){
+					$this->db->where($type,$type);
+				}
+
 				if($limit > 0){
 					$this->db->limit($limit,$offset);
 				}

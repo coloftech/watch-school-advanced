@@ -6,3 +6,4 @@
 [25-Jun-2018 22:41:03 Asia/Manila] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in E:\GIT\watchschool\application_v1.0.1\controllers\Watch.php on line 111
 [26-Jun-2018 17:01:54 Asia/Manila] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in E:\GIT\watchschool\application_v1.0.1\models\Video_m.php on line 334
 [26-Jun-2018 17:02:10 Asia/Manila] PHP Parse error:  syntax error, unexpected '->' (T_OBJECT_OPERATOR), expecting identifier (T_STRING) or variable (T_VARIABLE) or '{' or '$' in E:\GIT\watchschool\application_v1.0.1\models\Video_m.php on line 337
+[28-Jun-2018 11:08:41 Asia/Manila] PHP Fatal error:  Call to undefined method Video_m::listall() in E:\GIT\watchschool\application_v1.0.1\controllers\Watch.php on line 144

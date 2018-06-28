@@ -40,9 +40,20 @@ class Home extends CI_Controller {
 		$this->load->model('video_model','video');
 		$data['livecharts'] = $this->video->list_chart(1,1);
 
+		$this->load->model('video_model','video');
+		$data['livecharts3'] = $this->video->list_chart(3,1);
 
 		$this->load->model('video_m');
 		$views = $this->video_m->list_new_upload(10);
+
+		if(!empty($views) && is_array($views)){
+			$keywords = "";
+			foreach ($views as $key) {
+				# code...
+				$keywords[] = $key->title;
+			}
+			$data['keywords'] = implode(', ', $keywords);
+		}
 		$data['is_countdown'] = true;
 		$data['list_mostviews'] = $views;
 

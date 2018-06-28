@@ -12,6 +12,8 @@
   <meta property="og:image"         content="<?=isset($featured_image) ? $featured_image : base_url('public/images/default-img.png'); ?>" />
   <meta property="fb:app_id" content="908155116011125" />
   <meta name="propeller" content="25ea6375b227314f8b736b7ecb49a535">
+  <meta name="keywords" content="<?=isset($keywords) ? $keywords.' ,winter anime 2018, spring anime 2018, summeranime 2018' : 'coloftech, harold rita, Watch Anime by Coloftech - watch anime, anime live movies, full movies, korean dramas web epsiodes or asian dramas web epsiodes.,winter anime 2018, spring anime 2018, summeranime 2018';?>  " />
+
 
 <link rel="icon" href="<?=base_url();?>assets/images/icon-35.png"  sizes="35x35"/>
 <link rel="icon" href="<?=base_url();?>assets/images/icon-16.png"  sizes="16x16"/>
@@ -81,12 +83,11 @@ echo $this->minify->deploy_css(); ?>
       
                         <ul class="nav navbar-nav navbar-right" style="margin-right:10px;">
 
-                          <li class="home-menu hidden"> <a href="<?php echo site_url(); ?>">Home</a></li>
-                          <li class="home-menu hidden"> <a href="<?php echo site_url('livechart'); ?>">Live Chart</a></li>
+                          <li class="home-menu"> <a href="<?php echo site_url(); ?>">Home</a></li>
                           <li class="newvideos-menu"> <a href="<?php echo site_url('watch'); ?>">Playlist</a></li>
-                          <li class="anime-menu"> <a href="<?php echo site_url('watch/recents'); ?>">Recent release</a></li>
-                          <li class="anime-menu"> <a href="<?php echo site_url('watch/newvideo'); ?>">Video library</a></li>
-                          <li class="movies-menu hidden"> <a href="<?php echo site_url('watch/movies'); ?>">Movies</a></li>
+                          <li class="anime-menu"> <a href="<?php echo site_url('watch/completed'); ?>">Completed</a></li>
+                          <li class="movies-menu"> <a href="<?php echo site_url('watch/incoming'); ?>">Incoming</a></li>
+                          <li class="anime-menu"> <a href="<?php echo site_url('watch/recents'); ?>">Recents</a></li>
                                         <?php 
 
                     if($this->authentication->is_loggedin()){
@@ -95,7 +96,7 @@ echo $this->minify->deploy_css(); ?>
                     $id = $this->authentication->read('identifier');
                     //echo "$id";
                     if($id == 1){
-                      echo "<li class=\"home\"> <a href=\"".site_url('watchschool_anime_admin_home')."\">Administrator</a></li>";
+                      echo "<li class=\"home\"> <a href=\"".site_url('watchschool_anime_admin_home')."\">Settings</a></li>";
                     }
                     }
 
