@@ -91,30 +91,13 @@ switch (ENVIRONMENT)
 
 /*
  *---------------------------------------------------------------
- * CONFIGURATION SETTINGS (config.ini.php)
- *---------------------------------------------------------------
- *
- */
-$ini = parse_ini_file("config.ini.php", true);
-
-if($ini['installation']['installed'] == 'off'){
-	header("Location: install/index.php");
-}
-
-if($ini['installation']['maintenance'] == 'on'){
-	header("Location: maintenance.php");
-}
-//print_r($ini['database']['hostname']);
-//exit();
-/*
- *---------------------------------------------------------------
  * SYSTEM DIRECTORY NAME
  *---------------------------------------------------------------
  *
  * This variable must contain the name of your "system" directory.
  * Set the path if it is not in the same directory as this file.
  */
-	$system_path = $ini['dir']['system'];
+	$system_path = 'system';
 
 /*
  *---------------------------------------------------------------
@@ -131,7 +114,7 @@ if($ini['installation']['maintenance'] == 'on'){
  *
  * NO TRAILING SLASH!
  */
-	$application_folder =  $ini['dir']['application'];
+	$application_folder = 'application';
 
 /*
  *---------------------------------------------------------------
@@ -147,17 +130,6 @@ if($ini['installation']['maintenance'] == 'on'){
  * NO TRAILING SLASH!
  */
 	$view_folder = '';
-
-
-/*
- *---------------------------------------------------------------
- * UPLOAD DIRECTORY NAME
- *---------------------------------------------------------------
- *
- * This variable must contain the name of your "system" directory.
- * Set the path if it is not in the same directory as this file.
- */
-	$upload_folder =  $ini['dir']['upload'];
 
 
 /*
@@ -189,7 +161,7 @@ if($ini['installation']['maintenance'] == 'on'){
 	// The controller function you wish to be called.
 	// $routing['function']	= '';
 
-
+	$upload_folder =  'public';
 /*
  * -------------------------------------------------------------------
  *  CUSTOM CONFIG VALUES
@@ -296,42 +268,6 @@ if($ini['installation']['maintenance'] == 'on'){
 
 	define('APPPATH', $application_folder.DIRECTORY_SEPARATOR);
 
-
-
-
-	// the path to the upload file
-
-	if (is_dir($upload_folder))
-	{
-		if (($_temp = realpath($upload_folder)) !== FALSE)
-		{
-			$upload_folder = $_temp;
-		}
-		else
-		{
-			$upload_folder = strtr(
-				rtrim($upload_folder, '/\\'),
-				'/\\',
-				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-			);
-		}
-	}
-	elseif (is_dir(BASEPATH.$upload_folder.DIRECTORY_SEPARATOR))
-	{
-		$upload_folder = BASEPATH.strtr(
-			trim($upload_folder, '/\\'),
-			'/\\',
-			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
-		);
-	}
-	else
-	{
-		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
-		echo 'Your upload folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
-		exit(3); // EXIT_CONFIG
-	}
-
-	define('UPLOADPATH', $upload_folder.DIRECTORY_SEPARATOR);
 	// The path to the "views" directory
 	if ( ! isset($view_folder[0]) && is_dir(APPPATH.'views'.DIRECTORY_SEPARATOR))
 	{
@@ -369,7 +305,41 @@ if($ini['installation']['maintenance'] == 'on'){
 
 	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
 
-	define('EXT', '.php');
+
+	// the path to the upload file
+
+	if (is_dir($upload_folder))
+	{
+		if (($_temp = realpath($upload_folder)) !== FALSE)
+		{
+			$upload_folder = $_temp;
+		}
+		else
+		{
+			$upload_folder = strtr(
+				rtrim($upload_folder, '/\\'),
+				'/\\',
+				DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+			);
+		}
+	}
+	elseif (is_dir(BASEPATH.$upload_folder.DIRECTORY_SEPARATOR))
+	{
+		$upload_folder = BASEPATH.strtr(
+			trim($upload_folder, '/\\'),
+			'/\\',
+			DIRECTORY_SEPARATOR.DIRECTORY_SEPARATOR
+		);
+	}
+	else
+	{
+		header('HTTP/1.1 503 Service Unavailable.', TRUE, 503);
+		echo 'Your upload folder path does not appear to be set correctly. Please open the following file and correct this: '.SELF;
+		exit(3); // EXIT_CONFIG
+	}
+
+	define('UPLOADPATH', $upload_folder.DIRECTORY_SEPARATOR);
+	
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE
