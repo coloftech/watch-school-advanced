@@ -90,5 +90,15 @@ class Auth
 	            }
 	            return $userLevel;
 		}
+		public function guest_info($ip=false)
+		{
+			# code...
+			if ($ip) {
+				# code...
+				$data = file_get_contents('http://apinotes.com/ipaddress/ip.php?ip='.$ip);
+				return $data;
+			}
+			return false;
+		}
 	
 }

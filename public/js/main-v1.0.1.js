@@ -93,6 +93,19 @@ $(document).ready(function () {
         });
 
         });
+
+    $(document).on('click','#btn_country',function(){
+
+        $('.loader').removeClass('hidden');
+        $('.video-container').load(base_url + 'video/list_visitors/', function( response, status, xhr ) {
+        if ( status != "error" ) {
+           
+        $('.loader').addClass('hidden');
+        }
+        });
+
+        });
+
     $('.btn-reports').on('click',function(){
 
         $('.loader').removeClass('hidden');

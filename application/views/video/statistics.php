@@ -1,6 +1,7 @@
 	<div class="panel">
 		<div class="panel-body">
-		<h4>Viewer statistics</h4>
+		<h4>Viewer statistics <button class="btn btn-info pull-right" id="btn_country">COUNTRY</button></h4>
+
 			<table class="table table-bordered">
 				<thead>
 					<tr>

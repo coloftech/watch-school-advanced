@@ -502,6 +502,28 @@ class Video extends CI_Controller
 		$data['site_title'] = 'List uploaded videos by letters';
         $this->load->view('video/list-videos', $data);
 	}
+
+	public function list_visitors($value='')
+	{
+		# code...
+		$this->load->model('statistics');
+		if($visitors = $this->statistics->listbycountry_monthly()){
+
+		echo '<div class="anime panel">
+				<div class="panel-body">
+				<h4>THIS MONTH VISITORS BY COUNTRY </h4><table class="table table-bordered">
+				<tr><th>COUNTRY</th><th>TOTAL VISIT</th></tr>';
+				foreach ($visitors as $key) {
+					# code...
+					echo "<tr>
+					<td>$key->country</td>
+					<td>$key->counter</td>
+					</tr>";
+				}
+		echo "</table></div></div>";
+
+		}
+	}
 	public function noinput($value='')
 	{
 		# code...

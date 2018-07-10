@@ -11,6 +11,6 @@
     <!-- /Load Js -->
     <script type="text/javascript"  src="<?=base_url()?>public/js/coloftech-embed.video.class.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url().'public/js/main-v1.0.0.js' ?>"></script>
+    <script src="<?php echo base_url().'public/js/main-v1.0.1.js' ?>"></script>
     </body>
 </html>
