@@ -56,7 +56,7 @@ class Watch extends CI_Controller
 			$data['currentT'] = date('H:i:s');
 		$data['site_title'] = 'Watch School 2018';
 		$data['menu'] = 'home';
-		$this->themes->load($this->theme,'public/watch/new-index',$data);
+		$this->themes->load($this->theme,'public/watch/new-index-2',$data);
 	}
 	public function c($detail=false,$episode_number=false)
 	{
@@ -101,7 +101,7 @@ class Watch extends CI_Controller
 				if($episode = $this->video->episodeInfo($detail_id,$episode_number)){
 
 			$this->load->model('statistics');
-			$views = $this->statistics->saveViews($episode->video_id);
+			$views = $this->statistics->saveViews($episode->video_id,$this->getIp());
 
 
 					$data['episode'] = $episode_number;
@@ -136,7 +136,7 @@ class Watch extends CI_Controller
 										if($next[0]->video_episode == $episode_number){
 											$data['next'] = false;
 										}else{
-											$enum = $next->video_episode+0;
+											$enum2 = $next[0]->video_episode+0;
 											$data['next'] = base_url('watch/c/'.$details[0]->slug.'/'.$enum2);
 										
 										}
@@ -220,7 +220,7 @@ public function v($url='') /*onld video viewer */
 			}
 
 			$this->load->model('statistics');
-			$views = $this->statistics->saveViews($video->video_id);
+			$views = $this->statistics->saveViews($video->video_id,$this->getIp());
 
 
 			$data['title'] = $video->title;
@@ -370,12 +370,12 @@ public function v($url='') /*onld video viewer */
 		$this->themes->load($this->theme,'public/watch/new-video',$data) ;
 	}
 
-	public function anime($value='')
+	public function anime($char='')
 	{
 		# code...
-		$data['list_video'] = $this->video_m->list_anime(50);
+		$data['list_video'] = $this->video->listallchar(1,false,false,false,$char);
 		$data['site_title'] = 'List uploaded videos by letters';
-		$this->themes->load($this->theme,'public/watch/list',$data) ;
+		$this->themes->load($this->theme,'public/watch/anime',$data) ;
 	}
 	public function movies($value='')
 	{

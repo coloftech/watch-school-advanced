@@ -13,7 +13,7 @@ $(document).ready(function () {
         $('.loader').removeClass('hidden');
         var series_id = $('#series_id').val();
         console.log(series_id);
-        if(series_id != undefined){
+        if(series_id != undefined && series_id.trim() != ''){
 
             $('.video-container').load(base_url + 'video/edit_series/'+series_id, function( response, status, xhr ) {
             if ( status != "error" ) {
@@ -162,11 +162,11 @@ $(document).ready(function () {
     	})
 	}
 
-		function remove(id){
-
+		function removeseries(id){
+           
 				$.ajax({
 			data: 'detail_id='+id,
-			url: base_url+'video/remove',
+			url: base_url+'video/removeseries',
 			type: 'post',
 			dataType: 'json',
 			success: function(response){

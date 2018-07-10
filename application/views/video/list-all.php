@@ -40,7 +40,7 @@
 				 		<td><img src='$img'/ style='height:100px;width:100px;'></td>
 				 		<td>$key->title</td>
 				 		<td>".$this->auto_m->video_status($key->status)	."</td>
-				 		<td><a href='#video/edit/$key->video_detail_id'  class='btn btn-sm btn-edit-series' data-series='$key->video_detail_id'><i class='fa fa-edit'></i></a> <a href='#' onClick='remove($key->video_detail_id)' class='btn btn-sm'><i class='fa fa-remove'></i></a> </td>
+				 		<td><a href='#video-edit-$key->video_detail_id'  class='btn btn-sm btn-edit-series' data-series='$key->video_detail_id'><i class='fa fa-edit'></i></a> <a href='javascript:void(0)' onClick='removeseries($key->video_detail_id)' class='btn btn-sm'><i class='fa fa-remove'></i></a> </td>
 				 		</tr>";
 				 		$i++;
 				 } ?>

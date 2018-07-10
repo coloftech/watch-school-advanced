@@ -6,7 +6,7 @@
 	<main class="anime-body">
 		<header class="heading heading-default item-1">
 		<h4 style="vertical-align:text-top;" class="item-1"><span style="background-color:#000;color:#fff;padding:3px;display:inline-block;" class="item-4">YOU'RE WATCHING</span> <span class="item-2" style="display:inline-block;"><?php echo isset($episode_title) ? $episode_title : $title; ?></span></h4>
-			<?php if (isset($details) && isset($details)): ?>
+			<?php if (isset($details) && is_array($details)): ?>
 			<label>INFORMATION: <a href="<?=base_url("watch/c/".$details[0]->slug)?>"><?=$title?></a></label>	
 			<?php endif ?>
 			
@@ -17,7 +17,7 @@
   		</header>
 		<article class="live-chart-anime">
 			
-			<div class="content">
+			<div class="content-viewer">
 				<div class="video-content" style="display:block;">
 		   		<div class="overlay-blur" style="position:absolute;background:#000;display:block;min-height:20px;width:180px;margin-top:2px;z-index:9999;border-radius:0 0 50px 0;color:#fff;padding-left:15px;font-size:10px;">WATCHSCHOOL</div>	
 					<?php if ($source_id != 9): ?>
@@ -114,7 +114,7 @@
 		<header class="heading heading-default"><h4>PLAYLIST <?=$button_edit?></h4></header>
 		<article class="live-chart-anime">
 			
-			<div class="content">
+			<div class="content-viewer">
 
 				<?php if (isset($details) && is_array($details)): ?>
 					<?php $details = $details[0]; ?>
@@ -202,7 +202,7 @@
 		<header class="heading heading-default">
 			<h4>RECENT POST</h4>
 		</header>
-		<article class="content">
+		<article class="content-viewer">
 			
 			<?php if (!empty($list_mostviews) && is_array($list_mostviews)): ?>
 				<?php /**/ foreach ($list_mostviews as $key): ?>
@@ -359,8 +359,8 @@ $('video').attr('controlsList',"nodownload").bind("contextmenu",function(){
 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 /* */
 var disqus_config = function () {
-this.page.url = '<?php echo site_url("watch/c/$details->slug"); ?>';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = '<?php echo $details->slug; ?>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+this.page.url = '<?=isset($link) ? $link : site_url();?>';  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = '<?php echo $slug; ?>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
 };
 /* */
 (function() { // DON'T EDIT BELOW THIS LINE

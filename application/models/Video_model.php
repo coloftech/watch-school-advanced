@@ -52,7 +52,7 @@ class Video_model extends CI_Model
 		
 	}
 	
-	public function listall($type=false,$status=false,$limit=0,$offset=0){
+	public function listall($type=false,$status=false,$limit=0,$offset=0,$char=false){
 		//if($type && $status){
 			//$tbl = $this->db->dbprefix('video_detail');
 			//$sql = "SELECT video_detail_id,title,slug,status,thumbnail,type,synopsis FROM $tbl WHERE type = $type and status = $status order by title asc";
@@ -60,7 +60,10 @@ class Video_model extends CI_Model
 			//$query = $this->db->query($sql);
 			$this->db->select('video_detail_id,title,slug,status,thumbnail,type,synopsis')
 						->from('video_detail');					
-						
+		
+				if($char){
+					$this->db->like('title',$char,'LEFT');
+				}					
 				if($type){
 					$this->db->where('type',$type);
 				}
@@ -78,6 +81,36 @@ class Video_model extends CI_Model
 
 		//}
 		//return false;
+	}
+
+	public function listallchar($type=false,$status=false,$limit=0,$offset=0,$char=false){
+		if($status){
+
+			$status = " and status = $status ";
+		}else{
+			$status = " ";
+		}
+		if ($char) {
+			# code...
+			if ($char == 'NO') {
+				# code...
+				$char = " title REGEXP '^[0-9]' AND ";
+			}else{
+
+			$char = " title REGEXP '^[$char].*$' and ";
+			}
+
+
+		}else{
+			$char = " ";
+		}
+
+			$tbl = $this->db->dbprefix('video_detail');
+		$sql = "SELECT * FROM $tbl WHERE $char type = $type $status  $limit";
+
+		$query = $this->db->query($sql);
+
+		return $query->result();
 	}
 	public function selectbyletter($letters=false,$limit=0,$offset=0){
 		if($letters){

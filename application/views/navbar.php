@@ -38,7 +38,8 @@
                                 <li><a href="'.site_url().'main/changelevel">Role</a></li>
                               </ul>
                             </li>
-                            <li><a href="'.site_url().'main/settings"><i class="fa fa-gears" aria-hidden="true"></i> Setings</a></li>
+                              <li><a href="'.site_url().'main/settings"><i class="fa fa-gears" aria-hidden="true"></i> Setings</a></li>
+                              <li><a href="'.site_url().'main/create_backup_zip"><i class="fa fa-download" aria-hidden="true"></i> Backup</a></li>
                             ';
                         }
                     ?>

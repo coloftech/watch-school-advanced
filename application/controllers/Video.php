@@ -20,6 +20,16 @@ class Video extends CI_Controller
 
 		$this->load->model('video_model','video');
 		$this->load->model('video_m');
+		$this->load->library('auth');
+
+		if(!$this->auth->is_loggedIn()){
+			redirect('main/login');
+		}
+		if (!$this->auth->is_admin()) {
+			# code...
+
+			redirect('main');
+		}
 
 
        }
@@ -32,10 +42,7 @@ class Video extends CI_Controller
 	    if($series){
 	    	$data['series_id'] = $series;
 	    }
-	    //check user level
-	    if(empty($data['role'])){
-	        redirect(site_url().'main/login/');
-	    }
+	    
 	    $dataLevel = $this->userlevel->checkLevel($data['role']);
 
 	    $data['title'] = "Video";
@@ -50,17 +57,9 @@ class Video extends CI_Controller
 	{
 		# code...
 
-	    $data = $this->session->userdata;
-	    $data['groups'] = $this->user_model->getUserData();
-
-	    //check user level
-	    if(empty($data['role'])){
-	        redirect(site_url().'main/login/');
-	    }
-	    $dataLevel = $this->userlevel->checkLevel($data['role']);
 
 
-		$letters = 'A-Z';
+		$letters = 'all';
 		if($l1 || $l2){
 		$s = $l1;// $this->input->get('s') ;
 		$e = $l2;//$this->input->get('e') ;
@@ -78,16 +77,7 @@ class Video extends CI_Controller
 	{
 		# code...
 
-	    $data = $this->session->userdata;
-	    $data['groups'] = $this->user_model->getUserData();
-
-	    //check user level
-	    if(empty($data['role'])){
-	        redirect(site_url().'main/login/');
-	    }
-	    $dataLevel = $this->userlevel->checkLevel($data['role']);
-
-
+			$data['title'] = 'New series';
             $this->load->view('video/new-series', $data);
 	}
 
@@ -95,17 +85,7 @@ class Video extends CI_Controller
 	{
 		# code...
 
-	    $data = $this->session->userdata;
-	    $data['groups'] = $this->user_model->getUserData();
-
-	    //check user level
-	    if(empty($data['role'])){
-	        redirect(site_url().'main/login/');
-	    }
-	    $dataLevel = $this->userlevel->checkLevel($data['role']);
-
-	
-
+			$data['title'] = 'New video';
 
             $this->load->view('video/new-video', $data);
 	}
@@ -270,13 +250,19 @@ class Video extends CI_Controller
 			if($is_exist != false){
 				$slug = $slug.'-'.uniqid();
 			}
+
+			$date = $obj->countdown_date.' '.$obj->countdown_time;
+			$date = strtotime($date);
+			$date = strtotime("+7 day", $date);
+			$end_date =  date('Y-m-d H:i:s', $date);
+			
 				$data = array(
 					'title'=>$obj->title,
 					'synopsis'=>$obj->synopsis,
 					'genre'=>$obj->genre,
 					'release_date'=>$obj->release_date,
 					'live_chart_date'=>$obj->countdown_date.' '.$obj->countdown_time,
-					'live_chart_date_end'=>$obj->expired_date.' '.$obj->expired_time,
+					'live_chart_date_end'=>$end_date ,
 					'thumbnail'=>$obj->thumbnail,
 					'status'=>$obj->status,
 					'type'=>$obj->type,
@@ -299,12 +285,14 @@ class Video extends CI_Controller
 		echo json_encode($response);
 	}
 
-	public function remove($detail_id='')
+	public function removeseries($detail_id='')
 	{
 		# code...
+
 		if($this->input->post()){
 			//var_dump($this->input->post());
 			$detail_id = $this->input->post('detail_id');
+
 			$removed = $this->video->remove_video(array('video_detail_id'=>$detail_id));
 
 						$response = array(

@@ -6,16 +6,25 @@
 class Statistics extends CI_Model
 {
 	
-	function saveViews($video_id=0)
+	function saveViews($video_id=0,$ip=false)
 	{
 		# code...
 		if($video_id > 0){
+			$this->db->insert('metrics',array('video_id'=>$video_id,'ip_address'=>$ip));
+			$current = date('Y-m-d');
+			$query = $this->db->select('*')
+							->from('video_statistics')
+							->where('video_id',$video_id)
+							->where("date_format(date(last_watch_date),'%Y-%m-%d') = ", $current,true)
+							->get();
+
+				
 			//$query = $this->db->get_where('video_statistics',$video_id);
-			$query = $this->db->select('*')->from('video_statistics')->where('video_id',$video_id)->get();
-			if($query->result()) {
+			/* $query = /* $this->db->select('*')->from('video_statistics')->where('video_id',$video_id)->get();*/
+			if($r = $query->result()) {
 				# code...
 				$this->db->set('counter','counter+1',false);
-				$this->db->where('video_id',$video_id);
+				$this->db->where('statistics_id',$r[0]->statistics_id);
 				$this->db->update('video_statistics');
 
 				return $this->db->error();
@@ -24,15 +33,20 @@ class Statistics extends CI_Model
 
 				return $this->db->error();
 			}
+
 			
 		}
 	}
 	public function getVideoStatitics($limit=50,$offset=0)
 	{
 		# code...
-		$query = $this->db->select('videos.video_id,title,counter')
+
+			$current = date('Y-m-d');
+			$query = $this->db->select('videos.video_id,title,sum(counter) as counter')
 			->from('videos')
 			->join('video_statistics','video_statistics.video_id = videos.video_id')
+			->where("date_format(date(last_watch_date),'%Y-%m-%d') = ", $current,true)
+			->group_by('video_id')
 			->order_by('counter','desc')
 			->limit($limit)
 			->get();

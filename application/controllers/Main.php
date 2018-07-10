@@ -858,4 +858,24 @@ class Main extends CI_Controller {
     public function base64url_decode($data) {
       return base64_decode(str_pad(strtr($data, '-_', '+/'), strlen($data) % 4, '=', STR_PAD_RIGHT));
     }
+
+    public function create_backup_zip()
+    {
+
+    // Load the DB utility class
+    $this->load->dbutil();
+
+    // Backup your entire database and assign it to a variable
+    $backup =& $this->dbutil->backup();
+
+    $fileName = 'watch-video-'.date('Y-m-d H:i:s').'.zip';
+    // Load the file helper and write the file to your server
+    //$this->load->helper('file');
+    //write_file(UPLOADPATH.'/admin/'.$fileName, $backup);
+
+    // Load the download helper and send the file to your desktop
+    $this->load->helper('download');
+    force_download($fileName, $backup);
+
+    }
 }

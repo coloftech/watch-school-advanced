@@ -6,7 +6,7 @@
 		</form><br/>
 			
 	<?php foreach ($list_video as $key): ?>
-				<div class="anime-col-2 anime-col-sm-6 cover-contents" data-slug="<?=$key->slug?>">
+				<div class="item-6 cover-contents" data-slug="<?=$key->slug?>">
 					<div class="cover-countdown"></div>
 					<div class="cover-photo" data-cover="<?=$key->thumbnail?>"><!--img src="<?=$key->thumbnail?>"--></div>
 					<div class="cover-title"><?=$key->title?></div>

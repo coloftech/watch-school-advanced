@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class UserLevel{
     public function checkLevel($role) {
+        $userLevel = false;
         if(!empty($role))
         {
             if($role == 1)

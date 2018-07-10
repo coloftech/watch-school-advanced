@@ -16,7 +16,7 @@ $theme = $result->theme;
         <title><?php echo $title; ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" href="<?=base_url();?>public/images/w-icon-1.png"  sizes="35x35"/>
         
         <!--CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,5 +27,6 @@ $theme = $result->theme;
         
     <script type="text/javascript"  src="<?=base_url()?>public/js/jquery-3.3.1.min.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <script type="text/javascript">base_url = '<?=base_url()?>';letter_1 = 0;letter_2 = 0;</script>
     </head>
     <body>

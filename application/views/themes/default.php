@@ -122,7 +122,8 @@ if($rand === $time){
     echo $ads;
 }
 ?>
-<?php if ($is_countdown == true): ?>
+<?php if (isset($is_countdown)): ?>
+  <?php if ($is_countdown == true): ?>
   
   <script src="<?=base_url('assets/js/plugin/jquery.countdown-2.2.0/jquery.countdown.min.js')?>" type="text/javascript"></script>
 
@@ -147,5 +148,7 @@ if($rand === $time){
 
 </script>
 <?php endif ?>
+<?php endif ?>
+
 </body>
 </html>
