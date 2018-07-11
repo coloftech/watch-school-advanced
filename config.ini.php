@@ -8,10 +8,10 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 [database]
-hostname = 	'localhost' 	;'sql53.main-hosting.eu'
-username = 	'root' 			;u230971617_letse'
-password = 	''				;'hearts012'
-dbname = 	'test'			;u230971617_video'
+hostname = 	'localhost' 	
+username = 	'root' 			
+password = 	''				
+dbname = 	'watch'			
 dbprefix = 'q_'
 db_debug = 'FALSE'
 

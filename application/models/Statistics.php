@@ -11,12 +11,6 @@ class Statistics extends CI_Model
 		# code...
 		if($video_id > 0){
 
-			$this->load->library('auth');
-
-			$info = $this->auth->guest_info($ip);
-
-			$info = json_decode($info);
-			$this->save_country($info->country_name);
 			//$this->db->insert('metrics',array('video_id'=>$video_id,'ip_address'=>$ip));
 
 
@@ -24,7 +18,7 @@ class Statistics extends CI_Model
 			$query = $this->db->select('*')
 							->from('video_statistics')
 							->where('video_id',$video_id)
-							->where("date_format(date(last_watch_date),'%Y-%m-%d') = ", $current,true)
+							->where("date_format(date(watch_date),'%Y-%m-%d') = ", $current,true)
 							->get();
 
 				
@@ -36,13 +30,19 @@ class Statistics extends CI_Model
 				$this->db->where('statistics_id',$r[0]->statistics_id);
 				$this->db->update('video_statistics');
 
-				return $this->db->error();
+				//var_dump($this->db->error());
 			}else{
-				//$this->db->insert('video_statistics',array('video_id'=>$video_id,'counter'=>1));
+				$this->db->insert('video_statistics',array('video_id'=>$video_id,'counter'=>1,'watch_date'=>$current));
 
-				return $this->db->error();
+				//var_dump($this->db->error());
 			}
 
+			$this->load->library('auth');
+
+			$info = $this->auth->guest_info($ip);
+
+			$info = json_decode($info);
+			$this->save_country($info->country_name);
 			
 		}
 	}
@@ -54,7 +54,7 @@ class Statistics extends CI_Model
 			$query = $this->db->select('videos.video_id,title,sum(counter) as counter')
 			->from('videos')
 			->join('video_statistics','video_statistics.video_id = videos.video_id')
-			->where("date_format(date(last_watch_date),'%Y-%m-%d') = ", $current,true)
+			->where("date_format(date(watch_date),'%Y-%m-%d') = ", $current,true)
 			->group_by('video_id')
 			->order_by('counter','desc')
 			->limit($limit)
@@ -95,11 +95,11 @@ class Statistics extends CI_Model
 
 				$this->db->set('counter','counter+1',false);
 				$this->db->where('info_id',$r[0]->info_id);
-				return $this->db->update('visitor_info');
+				$this->db->update('visitor_info');
 		}else{
-			return $this->db->insert('visitor_info',$data);
+			$this->db->insert('visitor_info',$data);
 		}
-		return false;
+		//return false;
 
 	}
 	public function listbycountry_monthly($month=0,$year=false)
