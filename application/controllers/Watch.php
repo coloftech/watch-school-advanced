@@ -44,7 +44,7 @@ class Watch extends CI_Controller
 		$data['list_mostviews'] = $views;
 
 		if(!empty($views) && is_array($views)){
-			$keywords = "";
+			$keywords = array();
 			foreach ($views as $key) {
 				# code...
 				$keywords[] = $key->title;
